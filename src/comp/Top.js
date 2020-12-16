@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -10,11 +11,9 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
-
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-
 import { routes } from "./router";
 
 const useStyles = makeStyles(() => ({
@@ -32,10 +31,13 @@ const useStyles = makeStyles(() => ({
 function Top(props) {
   const classes = useStyles();
   const [isConnect, setIsConnect] = useState(true);
-  const [page, setPage] = useState(routes[0].name);
+  const [page, setPage] = useState(routes[0].path);
 
-  const handleCallToRouter = (event, page) => {
-    setPage(page);
+  const history = useHistory();
+
+  const handleCallToRouter = (event, path) => {
+    setPage(path);
+    history.push(path);
   };
 
   const updateUserConnection = (event) => {
@@ -74,13 +76,8 @@ function Top(props) {
               aria-label="menu"
               centered
             >
-              {routes.map((route) => (
-                <Tab
-                  key={route.name}
-                  value={route.name}
-                  label={route.label}
-                  to={route.path}
-                />
+              {routes.map(({ path, name, label }) => (
+                <Tab key={name} value={path} label={label} />
               ))}
             </Tabs>
           </Paper>

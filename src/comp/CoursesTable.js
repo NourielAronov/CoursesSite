@@ -1,51 +1,44 @@
 import React from "react";
-import { useState } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Loader from "react-loader-spinner";
-import Cart from "./Cart";
+
 import CourseRow from "./CourseRow";
 import CourseFilter from "./CourseFilter";
 import Divider from "@material-ui/core/Divider";
+import {
+  fetchCourses,
+  addCourse,
+} from "../redux/course/courseAction";
 
 const useStyles = makeStyles(() => ({
   tableContent: {
     height: 300,
     overflow: "auto",
   },
-  cartContent: {
-    height: 300,
-  },
 }));
 
-function CoursesTable(props) {
+function CoursesTable() {
   const classes = useStyles();
+  
+  const coursesData = useSelector((state) => state.course);
+  const dispatch = useDispatch();
 
-  const [selectedCourses, setSelectedCourses] = useState([]);
+  useEffect(() => {
+    dispatch(fetchCourses());
+  }, [dispatch]);
 
-  const addCourseToCart = (event, course) => {
+  function addCourseToCart(event, course) {
     if (event.target.checked) {
-      setSelectedCourses([
-        ...selectedCourses,
-        {
-          id: selectedCourses.length,
-          name: course.name,
-          date: course.date,
-        },
-      ]);
+      dispatch(addCourse(course));
     }
   };
 
-  const deleteCourseFromCart = (id) => {
-    const newCourses = selectedCourses.filter((selectedCourse) => {
-      return selectedCourse.id !== id;
-    });
-
-    setSelectedCourses(newCourses);
-  };
-
-  if (props.isLoading) {
+  if (coursesData.loading) {
     return (
       <div align="center">
         <Loader type="ThreeDots" color="#00BFFF" timeout={3000} />
@@ -54,33 +47,23 @@ function CoursesTable(props) {
   }
 
   return (
-    <Grid container spacing={6}>
-      <Grid item xs={8}>
-        <form>
-          <CourseFilter />
+    <form>
+      <CourseFilter />
 
-          <Grid
-            container
-            component={Paper}
-            spacing={2}
-            className={classes.tableContent}
-          >
-            {props.courses.map((course) => (
-              <Grid item xs={12} key={course.name}>
-                <CourseRow course={course} addCourseToCart={addCourseToCart} />
-                <Divider />
-              </Grid>
-            ))}
+      <Grid
+        container
+        component={Paper}
+        spacing={2}
+        className={classes.tableContent}
+      >
+        {coursesData.courses.map((course) => (
+          <Grid item xs={12} key={course.name}>
+            <CourseRow courseInfo={course} addCourseToCart={addCourseToCart} selectedCourses={coursesData.selectedCourses} />
+            <Divider />
           </Grid>
-        </form>
+        ))}
       </Grid>
-      <Grid item xs={4} className={classes.cartContent}>
-        <Cart
-          selectedCoursesList={selectedCourses}
-          deleteCourse={deleteCourseFromCart}
-        />
-      </Grid>
-    </Grid>
+    </form>
   );
 }
 

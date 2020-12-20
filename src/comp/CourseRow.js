@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from 'react';
+import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormGroup from "@material-ui/core/FormGroup";
@@ -20,13 +20,13 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function CourseRow(props) {
+function CourseRow({ courseInfo, addCourseToCart, selectedCourses }) {
   const classes = useStyles();
-  const [checked, setChecked] = useState(false);
   const [course, setCourse] = useState({
-    name: props.course.name,
+    name: courseInfo.name,
     date: "",
   });
+
   const allowAddingCourse = (event) => {
     setCourse({
       ...course,
@@ -35,9 +35,12 @@ function CourseRow(props) {
   };
 
   const handleChange = (event) => {
-    props.addCourseToCart(event, course)
-    setChecked(true);
+    addCourseToCart(event, course);
   };
+
+  const isCourseInCart = selectedCourses.some(
+    (selectedCourse) => selectedCourse.name === course.name
+  );
 
   return (
     <Grid container alignItems="center">
@@ -49,14 +52,14 @@ function CourseRow(props) {
                 <Checkbox
                   color="primary"
                   aria-label="add to cart"
-                  disabled={course.date === "" || checked}
-                  checked={checked}
+                  disabled={course.date === "" || isCourseInCart}
+                  checked={isCourseInCart}
                   onChange={handleChange}
                 />
               }
               label={
-                <Typography color={checked ? "primary" : "initial"}>
-                  {props.course.name}
+                <Typography color={isCourseInCart ? "primary" : "initial"}>
+                  {courseInfo.name}
                 </Typography>
               }
             />
@@ -72,8 +75,9 @@ function CourseRow(props) {
             value={course.date}
             className={classes.select}
             onChange={allowAddingCourse}
+            disabled={isCourseInCart}
           >
-            {props.course.dates.map((date, dateId) => (
+            {courseInfo.dates.map((date, dateId) => (
               <MenuItem key={dateId} value={date}>
                 {date}
               </MenuItem>
@@ -82,7 +86,7 @@ function CourseRow(props) {
         </FormControl>
       </Grid>
       <Grid item xs={1}>
-        <Tooltip title={props.course.description} placement="right" arrow>
+        <Tooltip title={courseInfo.description} placement="right" arrow>
           <IconButton aria-label="error">
             <ErrorIcon />
           </IconButton>

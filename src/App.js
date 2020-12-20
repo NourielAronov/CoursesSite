@@ -4,37 +4,20 @@ import "./App.css";
 import Container from "@material-ui/core/Container";
 import RouterPage from "./comp/router";
 import Top from "./comp/Top";
+import store from "./redux/store";
+import { Provider } from "react-redux";
 
-import { connect } from "react-redux";
-
-function App(props) {
+function App() {
   return (
-    <Router>
-      <Container maxWidth="md" dir="rtl">
-        <Top />
-        <RouterPage />
-        {console.log("siteName: " + props.siteName)}
-      </Container>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Container maxWidth="md" dir="rtl">
+          <Top />
+          <RouterPage />
+        </Container>
+      </Router>
+    </Provider>
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    siteName: state.siteName
-  }
-}
-
-const mapDispachToProps = dispach => {
-  return {
-    changeSiteName(newSiteName) {
-      dispach({
-        type: "CHANGE_SITE_NAME",
-        payload: newSiteName
-      })
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispachToProps)(App)
-// export default App;
+export default App;

@@ -11,6 +11,9 @@ import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import CartCourse from "./CartCourse";
 
+import { useSelector, useDispatch } from "react-redux";
+import { deleteCourse, registerToCourses } from "../redux/course/courseAction";
+
 const useStyles = makeStyles({
   card: {
     height: 350,
@@ -27,8 +30,15 @@ const useStyles = makeStyles({
   },
 });
 
-function Cart(props) {
-  const classes = useStyles();
+function Cart() {
+  const classes = useStyles()
+
+  const coursesData = useSelector((state) => state.course);
+  const dispatch = useDispatch()
+
+  function deleteCourseFromCart(id) {
+    dispatch(deleteCourse(id))
+  }
 
   return (
     <Card className={classes.card} align="center">
@@ -46,13 +56,17 @@ function Cart(props) {
           aria-label="selected courses"
           className={classes.selectedCoursesList}
         >
-          {Array.from(props.selectedCoursesList).map((selectedCourse) => (
-            <CartCourse key={selectedCourse.id} selectedCourse={selectedCourse} deleteCourse={props.deleteCourse}/>
+          {Array.from(coursesData.selectedCourses).map((selectedCourse) => (
+            <CartCourse
+              key={selectedCourse.name}
+              selectedCourse={selectedCourse}
+              deleteCourse={deleteCourseFromCart}
+            />
           ))}
         </List>
       </CardContent>
       <Divider />
-      <CardActions className={classes.buyButton}>
+      <CardActions onClick={() => dispatch(registerToCourses())} className={classes.buyButton}>
         <IconButton color="primary" aria-label="buy and clear cart">
           <PaymentTwoToneIcon fontSize="large" />
         </IconButton>

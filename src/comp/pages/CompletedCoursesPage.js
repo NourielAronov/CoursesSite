@@ -1,13 +1,13 @@
 import React from 'react'
 import ProfileTopBar from "../ProfileTopBar"
 
-function MadeCoursesPage() {
+function CompletedCoursesPage() {
     return (
         <div>
             <ProfileTopBar />
-            MadeCoursesPage
+            CompletedCoursesPage
         </div>
     )
 }
 
-export default  MadeCoursesPage
+export default  CompletedCoursesPage

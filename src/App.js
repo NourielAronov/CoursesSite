@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Container from "@material-ui/core/Container";
-import RouterPage from "./comp/router";
+import RouterView from "./comp/Router";
 import Top from "./comp/Top";
 import store from "./redux/store";
 import { Provider } from "react-redux";
@@ -12,7 +12,7 @@ function App() {
       <Router>
         <Container maxWidth="md" dir="rtl">
           <Top />
-          <RouterPage />
+          <RouterView />
         </Container>
       </Router>
     </Provider>

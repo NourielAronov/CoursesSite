@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -11,10 +10,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
-import Paper from "@material-ui/core/Paper";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import { routes } from "./router";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -28,17 +24,11 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function Top(props) {
+function Top() {
   const classes = useStyles();
   const [isConnect, setIsConnect] = useState(true);
-  const [page, setPage] = useState(routes[0].path);
 
   const history = useHistory();
-
-  const handleCallToRouter = (event, path) => {
-    setPage(path);
-    history.push(path);
-  };
 
   const updateUserConnection = (event) => {
     setIsConnect(event.target.checked);
@@ -67,31 +57,16 @@ function Top(props) {
           <Typography variant="h6" className={classes.navTitle}>
             נרשמים ונהנים
           </Typography>
-          <Paper square>
-            <Tabs
-              value={page}
-              indicatorColor="primary"
-              textColor="primary"
-              onChange={handleCallToRouter}
-              aria-label="menu"
-              centered
-            >
-              {routes.map(({ path, name, label }) => (
-                <Tab key={name} value={path} label={label} />
-              ))}
-            </Tabs>
-          </Paper>
           {isConnect && (
-            <div>
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-            </div>
+            <IconButton
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              color="inherit"
+              onClick={() => history.push("/profile")}
+            >
+              <AccountCircle />
+            </IconButton>
           )}
         </Toolbar>
       </AppBar>

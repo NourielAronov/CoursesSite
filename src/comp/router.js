@@ -1,32 +1,21 @@
 import React from "react";
+import routes from "./routes"
 import { Route, Switch } from "react-router-dom";
 
-import HomePage from "./pages/HomePage";
-import MadeCoursesPage from "./pages/MadeCoursesPage";
 
-export const routes = [
-  {
-    path: "/",
-    name: "Home",
-    label: "Home",
-    component: HomePage,
-  },
-  {
-    path: "/made-courses",
-    name: "MadeCourses",
-    label: "Made Courses",
-    component: MadeCoursesPage,
-  },
-];
-
-function router() {
+function Router() {
   return (
     <Switch>
       {routes.map((route) => (
-        <Route key={route.name} exact path={route.path} component={route.component} />
+        <Route
+          key={route.name}
+          exact
+          path={route.path}
+          component={route.component}
+        />
       ))}
     </Switch>
   );
 }
 
-export default router;
+export default Router;

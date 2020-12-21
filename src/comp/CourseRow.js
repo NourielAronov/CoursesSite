@@ -1,46 +1,47 @@
-import React from "react";
-import { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-import Grid from "@material-ui/core/Grid";
-import ErrorIcon from "@material-ui/icons/Error";
-import Tooltip from "@material-ui/core/Tooltip";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
+import React from "react"
+import { useState } from "react"
+import { makeStyles } from "@material-ui/core/styles"
+import Checkbox from "@material-ui/core/Checkbox"
+import FormGroup from "@material-ui/core/FormGroup"
+import FormControlLabel from "@material-ui/core/FormControlLabel"
+import FormControl from "@material-ui/core/FormControl"
+import InputLabel from "@material-ui/core/InputLabel"
+import MenuItem from "@material-ui/core/MenuItem"
+import Select from "@material-ui/core/Select"
+import Grid from "@material-ui/core/Grid"
+import ErrorIcon from "@material-ui/icons/Error"
+import Tooltip from "@material-ui/core/Tooltip"
+import IconButton from "@material-ui/core/IconButton"
+import Typography from "@material-ui/core/Typography"
 
 const useStyles = makeStyles(() => ({
   select: {
     width: 107,
   },
-}));
+}))
 
 function CourseRow({ courseInfo, addCourseToCart, selectedCourses }) {
-  const classes = useStyles();
+  const classes = useStyles()
   const [course, setCourse] = useState({
     name: courseInfo.name,
     date: "",
-  });
+    description: courseInfo.description,
+  })
 
   const allowAddingCourse = (event) => {
     setCourse({
       ...course,
       date: event.target.value,
-    });
-  };
+    })
+  }
 
   const handleChange = (event) => {
-    addCourseToCart(event, course);
-  };
+    addCourseToCart(event, course)
+  }
 
   const isCourseInCart = selectedCourses.some(
     (selectedCourse) => selectedCourse.name === course.name
-  );
+  )
 
   return (
     <Grid container alignItems="center">
@@ -93,7 +94,7 @@ function CourseRow({ courseInfo, addCourseToCart, selectedCourses }) {
         </Tooltip>
       </Grid>
     </Grid>
-  );
+  )
 }
 
-export default CourseRow;
+export default CourseRow

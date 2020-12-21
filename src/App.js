@@ -1,10 +1,10 @@
-import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import Container from "@material-ui/core/Container";
-import RouterView from "./comp/Router";
-import Top from "./comp/Top";
-import store from "./redux/store";
-import { Provider } from "react-redux";
+import React from "react"
+import { BrowserRouter as Router } from "react-router-dom"
+import Container from "@material-ui/core/Container"
+import RouterView from "./comp/Router"
+import Top from "./comp/Top"
+import store from "./redux/store"
+import { Provider } from "react-redux"
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         </Container>
       </Router>
     </Provider>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -43,6 +43,7 @@ const courseReducer = (state = initialState, action) => {
             id: state.selectedCourses.length,
             name: action.payload.name,
             date: action.payload.date,
+            description: action.payload.description
           },
         ],
       };

@@ -1,18 +1,18 @@
-import React from "react";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
+import React from "react"
+import Grid from "@material-ui/core/Grid"
+import { makeStyles } from "@material-ui/core/styles"
 
-import CoursesTable from "../CoursesTable";
-import Cart from "../Cart";
+import CoursesTable from "../CoursesTable"
+import Cart from "../Cart"
 
 const useStyles = makeStyles(() => ({
   cartContent: {
     height: 300,
   },
-}));
+}))
 
 function HomePage() {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <div>
@@ -26,7 +26,7 @@ function HomePage() {
         </Grid>
       </Grid>
     </div>
-  );
+  )
 }
 
-export default HomePage;
+export default HomePage

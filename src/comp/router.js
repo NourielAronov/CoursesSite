@@ -1,7 +1,6 @@
-import React from "react";
+import React from "react"
 import routes from "./routes"
-import { Route, Switch } from "react-router-dom";
-
+import { Route, Switch } from "react-router-dom"
 
 function Router() {
   return (
@@ -15,7 +14,7 @@ function Router() {
         />
       ))}
     </Switch>
-  );
+  )
 }
 
-export default Router;
+export default Router

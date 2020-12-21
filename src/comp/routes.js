@@ -1,7 +1,7 @@
-import HomePage from "./pages/HomePage";
-import MadeCoursesPage from "./pages/MadeCoursesPage";
-import CompletedCoursesPage from "./pages/CompletedCoursesPage";
-import ProfilePage from "./pages/ProfilePage";
+import HomePage from "./pages/HomePage"
+import RegisteredCoursesPage from "./pages/RegisteredCoursesPage"
+import CompletedCoursesPage from "./pages/CompletedCoursesPage"
+import ProfilePage from "./pages/ProfilePage"
 
 const routes = [
   {
@@ -11,10 +11,10 @@ const routes = [
     component: HomePage,
   },
   {
-    path: "/made-courses",
-    name: "MadeCourses",
-    label: "Made Courses",
-    component: MadeCoursesPage,
+    path: "/registered-courses",
+    name: "RegisteredCourses",
+    label: "Registered Courses",
+    component: RegisteredCoursesPage,
   },
   {
     path: "/completed-courses",

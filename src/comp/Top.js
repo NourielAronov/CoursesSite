@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import Switch from "@material-ui/core/Switch";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormGroup from "@material-ui/core/FormGroup";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
+import React, { useState } from "react"
+import { useHistory } from "react-router-dom"
+import { makeStyles } from "@material-ui/core/styles"
+import AppBar from "@material-ui/core/AppBar"
+import Toolbar from "@material-ui/core/Toolbar"
+import Typography from "@material-ui/core/Typography"
+import IconButton from "@material-ui/core/IconButton"
+import HomeIcon from "@material-ui/icons/Home"
+import AccountCircle from "@material-ui/icons/AccountCircle"
+import Switch from "@material-ui/core/Switch"
+import FormControlLabel from "@material-ui/core/FormControlLabel"
+import FormGroup from "@material-ui/core/FormGroup"
+import MenuItem from "@material-ui/core/MenuItem"
+import Menu from "@material-ui/core/Menu"
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -23,27 +23,27 @@ const useStyles = makeStyles(() => ({
   navTitle: {
     flexGrow: 1,
   },
-}));
+}))
 
 function Top() {
-  const classes = useStyles();
-  const [isConnect, setIsConnect] = useState(true);
+  const classes = useStyles()
+  const [isConnect, setIsConnect] = useState(true)
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const open = Boolean(anchorEl)
 
-  const history = useHistory();
+  const history = useHistory()
 
   const updateUserConnection = (event) => {
-    setIsConnect(event.target.checked);
-  };
+    setIsConnect(event.target.checked)
+  }
 
   const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
   return (
     <div className={classes.root}>
@@ -64,7 +64,7 @@ function Top() {
             aria-label="open sideBar"
             onClick={() => history.push("/")}
           >
-            <MenuIcon />
+            <HomeIcon />
           </IconButton>
           <Typography variant="h6" className={classes.navTitle}>
             נרשמים ונהנים
@@ -88,13 +88,13 @@ function Top() {
                 onClose={handleClose}
               >
                 <MenuItem onClick={() => history.push("/profile")}>
-                  Profile
+                  פרופיל
                 </MenuItem>
-                <MenuItem onClick={() => history.push("/made-courses")}>
-                  made
+                <MenuItem onClick={() => history.push("/registered-courses")}>
+                  קורסים שאעשה
                 </MenuItem>
                 <MenuItem onClick={() => history.push("/completed-courses")}>
-                  completed
+                  קורסים שעשיתי
                 </MenuItem>
               </Menu>
             </div>
@@ -102,7 +102,7 @@ function Top() {
         </Toolbar>
       </AppBar>
     </div>
-  );
+  )
 }
 
-export default Top;
+export default Top

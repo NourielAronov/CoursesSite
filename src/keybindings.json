@@ -1,0 +1,6 @@
+[
+  {
+    "key": "Shift+Alt+f",
+    "command": "editor.action.formatFiles"
+  }
+]

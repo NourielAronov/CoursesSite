@@ -1,18 +1,18 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import PaymentTwoToneIcon from "@material-ui/icons/PaymentTwoTone";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import CartCourse from "./CartCourse";
+import React from "react"
+import { makeStyles } from "@material-ui/core/styles"
+import Card from "@material-ui/core/Card"
+import CardActions from "@material-ui/core/CardActions"
+import CardContent from "@material-ui/core/CardContent"
+import IconButton from "@material-ui/core/IconButton"
+import Typography from "@material-ui/core/Typography"
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart"
+import PaymentTwoToneIcon from "@material-ui/icons/PaymentTwoTone"
+import List from "@material-ui/core/List"
+import Divider from "@material-ui/core/Divider"
+import CartCourse from "./CartCourse"
 
-import { useSelector, useDispatch } from "react-redux";
-import { deleteCourse, registerToCourses } from "../redux/course/courseAction";
+import { useSelector, useDispatch } from "react-redux"
+import { deleteCourse, registerToCourses } from "../redux/course/courseAction"
 
 const useStyles = makeStyles({
   card: {
@@ -28,12 +28,12 @@ const useStyles = makeStyles({
   buyButton: {
     justifyContent: "center",
   },
-});
+})
 
 function Cart() {
   const classes = useStyles()
 
-  const coursesData = useSelector((state) => state.course);
+  const coursesData = useSelector((state) => state.course)
   const dispatch = useDispatch()
 
   function deleteCourseFromCart(id) {
@@ -66,13 +66,16 @@ function Cart() {
         </List>
       </CardContent>
       <Divider />
-      <CardActions onClick={() => dispatch(registerToCourses())} className={classes.buyButton}>
+      <CardActions
+        onClick={() => dispatch(registerToCourses())}
+        className={classes.buyButton}
+      >
         <IconButton color="primary" aria-label="buy and clear cart">
           <PaymentTwoToneIcon fontSize="large" />
         </IconButton>
       </CardActions>
     </Card>
-  );
+  )
 }
 
-export default Cart;
+export default Cart

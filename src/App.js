@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import "./App.css";
 import Container from "@material-ui/core/Container";
 import RouterPage from "./comp/router";
 import Top from "./comp/Top";

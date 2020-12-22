@@ -30,7 +30,7 @@ const useStyles = makeStyles({
   },
 })
 
-function Cart({ filterCourseByName, filterCoursesByDate }) {
+const Cart = ({ filterCourseByName, filterCoursesByDate }) => {
   const classes = useStyles()
 
   const coursesData = useSelector((state) => state.course)

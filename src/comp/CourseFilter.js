@@ -2,12 +2,12 @@ import React from "react"
 import TextField from "@material-ui/core/TextField"
 import Grid from "@material-ui/core/Grid"
 
-function CourseFilter({
+const CourseFilter = ({
   searchName,
   changeSearchName,
   searchDate,
   changeSearchDate,
-}) {
+}) => {
   return (
     <Grid container spacing={2} align="center">
       <Grid item xs={6}>

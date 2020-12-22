@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-function CourseRow({ courseInfo, addCourseToCart, selectedCourses }) {
+const CourseRow = ({ courseInfo, addCourseToCart, selectedCourses }) => {
   const classes = useStyles()
   const [course, setCourse] = useState({
     name: courseInfo.name,

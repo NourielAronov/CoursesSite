@@ -2,7 +2,7 @@ import React from "react"
 import routes from "./routes"
 import { Route, Switch } from "react-router-dom"
 
-function Router() {
+const Router = () => {
   return (
     <Switch>
       {routes.map((route) => (

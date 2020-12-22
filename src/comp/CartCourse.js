@@ -5,7 +5,7 @@ import ListItemText from "@material-ui/core/ListItemText"
 import CloseIcon from "@material-ui/icons/Close"
 import IconButton from "@material-ui/core/IconButton"
 
-function CartCourse({ selectedCourse, deleteCourse }) {
+const CartCourse = ({ selectedCourse, deleteCourse }) => {
   return (
     <ListItem>
       <ListItemIcon>

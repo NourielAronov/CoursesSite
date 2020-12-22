@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-function RegisteredCoursesPage() {
+const RegisteredCoursesPage = () => {
   const classes = useStyles()
   const coursesData = useSelector((state) => state.course)
 

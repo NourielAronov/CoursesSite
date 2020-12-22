@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-function Top() {
+const Top = () => {
   const classes = useStyles()
   const [isConnect, setIsConnect] = useState(true)
 

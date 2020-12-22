@@ -6,7 +6,7 @@ import Top from "./comp/Top"
 import store from "./redux/store"
 import { Provider } from "react-redux"
 
-function App() {
+const App = () => {
   return (
     <Provider store={store}>
       <Router>

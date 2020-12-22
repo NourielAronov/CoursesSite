@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-function ProfilePage() {
+const ProfilePage = () => {
   const classes = useStyles()
   return (
     <div className={classes.card}>

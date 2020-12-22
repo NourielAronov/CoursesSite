@@ -12,7 +12,7 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-function HomePage() {
+const HomePage = () => {
   const classes = useStyles()
   const [searchName, setSearchName] = useState("")
   const [searchDate, setSearchDate] = useState("")

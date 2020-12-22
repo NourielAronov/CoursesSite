@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-function CoursesTable({ filterCourseByName, filterCoursesByDate }) {
+const CoursesTable = ({ filterCourseByName, filterCoursesByDate }) => {
   const classes = useStyles()
 
   const coursesData = useSelector((state) => state.course)

@@ -1,7 +1,7 @@
 import React from "react"
 import { BrowserRouter as Router } from "react-router-dom"
 import Container from "@material-ui/core/Container"
-import RouterView from "./comp/Router"
+import RouterView from "./comp/router"
 import Top from "./comp/Top"
 import store from "./redux/store"
 import { Provider } from "react-redux"

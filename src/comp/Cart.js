@@ -30,7 +30,7 @@ const useStyles = makeStyles({
   },
 })
 
-function Cart() {
+function Cart({ filterCourseByName, filterCoursesByDate }) {
   const classes = useStyles()
 
   const coursesData = useSelector((state) => state.course)
@@ -39,6 +39,14 @@ function Cart() {
   function deleteCourseFromCart(id) {
     dispatch(deleteCourse(id))
   }
+
+  const filteredSelectedCourses = coursesData.selectedCourses.filter(
+    (selectedCourse) => {
+      return (
+        filterCourseByName(selectedCourse.name) && filterCoursesByDate(selectedCourse.date)
+      )
+    }
+  )
 
   return (
     <Card className={classes.card} align="center">
@@ -56,7 +64,7 @@ function Cart() {
           aria-label="selected courses"
           className={classes.selectedCoursesList}
         >
-          {Array.from(coursesData.selectedCourses).map((selectedCourse) => (
+          {Array.from(filteredSelectedCourses).map((selectedCourse) => (
             <CartCourse
               key={selectedCourse.name}
               selectedCourse={selectedCourse}

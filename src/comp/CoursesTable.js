@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 
@@ -8,7 +8,6 @@ import Grid from "@material-ui/core/Grid"
 import Loader from "react-loader-spinner"
 
 import CourseRow from "./CourseRow"
-import CourseFilter from "./CourseFilter"
 import Divider from "@material-ui/core/Divider"
 import { fetchCourses, addCourse } from "../redux/course/courseAction"
 
@@ -19,10 +18,8 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-function CoursesTable() {
+function CoursesTable({ filterCourseByName, filterCoursesByDate }) {
   const classes = useStyles()
-  const [searchName, setSearchName] = useState("")
-  const [searchDate, setSearchDate] = useState("")
 
   const coursesData = useSelector((state) => state.course)
   const dispatch = useDispatch()
@@ -37,25 +34,10 @@ function CoursesTable() {
     }
   }
 
-  const changeSearchName = (event) => {
-    setSearchName(event.target.value)
-  }
-  const changeSearchDate = (event) => {
-    setSearchDate(event.target.value)
-  }
-
-  const filterCourseByName = (courseName) => {
-    return (
-      courseName.toLowerCase().indexOf(searchName.toLocaleLowerCase()) !== -1
-    )
-  }
-
-  const filterCoursesByDate = (courseDate) => {
-    return courseDate.some((date) => date.indexOf(searchDate) !== -1)
-  }
-
   const filteredCourses = coursesData.courses.filter((course) => {
-    return filterCourseByName(course.name) && filterCoursesByDate(course.dates)
+    return (filterCourseByName(course.name) && filterCoursesByDate(course.dates)
+    && !coursesData.registeredCourses.some((selectedCourse) => selectedCourse.name === course.name)
+    )
   })
 
   if (coursesData.loading) {
@@ -68,13 +50,6 @@ function CoursesTable() {
 
   return (
     <form>
-      <CourseFilter
-        searchName={searchName}
-        changeSearchName={changeSearchName}
-        searchDate={searchDate}
-        changeSearchDate={changeSearchDate}
-      />
-
       <Grid
         container
         component={Paper}

@@ -1,6 +1,6 @@
-const express = require("express")
-var request = require("request")
-var cors = require("cors")
+import express from "express"
+import request from "request"
+const cors = require("cors")
 
 const App = express()
 const port = 5000

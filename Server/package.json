@@ -4,7 +4,7 @@
   "description": "",
   "main": "App.js",
   "scripts": {
-    "start": "nodemon App.js"
+    "start": "nodemon --exec babel-node App.js"
   },
   "keywords": [],
   "author": "",
@@ -12,7 +12,13 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "nodemon": "^2.0.6",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "nodemon": "^2.0.6"
   }
 }

@@ -3,11 +3,11 @@ FROM node:latest
 RUN mkdir -p /src/app/server
 WORKDIR /src/app/server
 
-COPY package.json /src/app/server
-COPY package-lock.json /src/app/server
+ADD docker/Server/package.json .
+ADD docker/Server/package-lock.json .
 
 RUN npm install
 
-COPY . /src/app/server
+COPY . .
 
 CMD ["npm", "start"]

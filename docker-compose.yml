@@ -5,36 +5,23 @@ services:
   # Setup node container
   #########################
   server:
-    # env_file: variables.env
     container_name: 'server'
-    # build: ./docker/server
     build:
       context: .
       dockerfile: ./docker/server/Dockerfile
     expose:
       - 4000
-    environment:
-      API_HOST: "http://localhost:4000"
-      APP_SERVER_PORT: 4000
     ports:
       - 4000:4000
-    volumes:
-      - ./Server:/src/app/server
-    command: npm run start
-
     ##########################
     # Setup client container
     ##########################
 
   client:
-    # env_file: variables.env
     container_name: 'client'
-    # build: ./docker/client
     build:
       context: .
       dockerfile: ./docker/client/Dockerfile
-    environment:
-      - REACT_APP_PORT=3000
     expose:
       - 3000
     ports:

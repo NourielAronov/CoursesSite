@@ -5,7 +5,8 @@
   "main": "App.js",
   "scripts": {
     "dev": "nodemon --exec babel-node App.js",
-    "start": "babel App.js --out-file App-compiled.js"
+    "compile": "babel App.js --out-file App-compiled.js",
+    "start": "npm run compile && node App-compiled.js"
   },
   "keywords": [],
   "author": "",

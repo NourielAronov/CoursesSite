@@ -7,8 +7,8 @@ services:
   server:
     container_name: 'server'
     build:
-      context: .
-      dockerfile: ./docker/server/Dockerfile
+      context: ./Server
+      dockerfile: ../docker/server/Dockerfile
     expose:
       - 4000
     ports:
@@ -20,8 +20,8 @@ services:
   client:
     container_name: 'client'
     build:
-      context: .
-      dockerfile: ./docker/client/Dockerfile
+      context: ./Client
+      dockerfile: ../docker/client/Dockerfile
     expose:
       - 3000
     ports:

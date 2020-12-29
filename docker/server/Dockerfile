@@ -2,11 +2,11 @@ FROM node:latest
 
 WORKDIR /src/app/server
 
-COPY Server/package*.json ./
+COPY package*.json ./
 
 RUN npm install
 
-COPY ./Server .
+COPY . .
 RUN ls
 
-CMD ["npm", "start"]
+ENTRYPOINT ["npm", "start"]

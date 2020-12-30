@@ -4,6 +4,7 @@
   "description": "",
   "main": "App.js",
   "scripts": {
+    "api": "nodemon api.js",
     "dev": "nodemon --exec babel-node App.js",
     "compile": "babel App.js --out-file App-compiled.js",
     "start": "npm run compile && node App-compiled.js"
@@ -14,6 +15,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "mssql": "^6.3.0",
     "request": "^2.88.2"
   },
   "devDependencies": {

@@ -1,0 +1,1 @@
+SELECT C.CourseName, C.CourseDescription, C.gmush, D.startDateFROM Dates as D JOIN CoursesDateRelation as CD   ON CD.DateID = D.DateIDJOIN Courses as C   ON CD.CourseID = C.CourseID 

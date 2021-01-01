@@ -78,9 +78,9 @@ const CourseRow = ({ courseInfo, addCourseToCart, selectedCourses }) => {
             onChange={allowAddingCourse}
             disabled={isCourseInCart}
           >
-            {courseInfo.dates.map((date, dateId) => (
-              <MenuItem key={dateId} value={date}>
-                {date}
+            {courseInfo.dates.map((date) => (
+              <MenuItem key={date.id} value={date.startDate}>
+                {date.startDate}
               </MenuItem>
             ))}
           </Select>

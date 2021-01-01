@@ -32,7 +32,7 @@ export const fetchCourses = () => {
   return (dispatch) => {
     dispatch(fetchCoursesRequest());
     axios
-      .get("http://localhost:4000/")
+      .get("http://localhost:4000/course")
       .then((response) => {
         const courses = response.data;
         dispatch(fetchCoursesSuccess(courses));

@@ -1,39 +1,47 @@
+const config = require("./config")
 const Sequelize = require("sequelize")
-const UserModel = require("./models/user")
-const BlogModel = require("./models/blog")
-const TagModel = require("./models/tag")
+const CourseModel = require("./models/courseModel")
+const DateModel = require("./models/dateModel")
 
-const sequelize = new Sequelize("connectionExample", null, null, {
-  dialect: "mssql",
+const sequelize = new Sequelize(config.DB, null, null, {
+  dialect: config.dialect,
+  host: config.HOST,
   dialectOptions: {
     authentication: {
       options: {
-        userName: "Nouriel",
-        password: "Nouriel",
+        userName: config.USER,
+        password: config.PASSWORD,
       },
     },
     options: {
       validateBulkLoadParameters: true,
       encrypt: false,
-      instanceName: "SQLEXPRESS",
+      instanceName: config.INSTANCE,
     },
+  },
+  define: {
+    timestamps: false
   },
 })
 
-const User = UserModel(sequelize, Sequelize)
-const BlogTag = sequelize.define("blog_tag", {})
-const Blog = BlogModel(sequelize, Sequelize)
-const Tag = TagModel(sequelize, Sequelize)
+const db = {}
 
-Blog.belongsToMany(Tag, { through: BlogTag, unique: false })
-Tag.belongsToMany(Blog, { through: BlogTag, unique: false })
+db.sequelize = sequelize
+db.Sequelize = Sequelize
 
-sequelize.sync({ force: true }).then(() => {
-  console.log(`Database & tables created!`)
+db.course = CourseModel(sequelize, Sequelize)
+db.date = DateModel(sequelize, Sequelize)
+
+db.course.belongsToMany(db.date, {
+  through: "course_date",
+  as: "dates",
+  foreignKey: "course_id",
 })
 
-module.exports = {
-  User,
-  Blog,
-  Tag,
-}
+db.date.belongsToMany(db.course, {
+  through: "course_date",
+  as: "courses",
+  foreignKey: "date_id",
+})
+
+module.exports = db

@@ -4,23 +4,19 @@
   "description": "",
   "main": "App.js",
   "scripts": {
-    "api": "node dbSampleConnection/api.js",
-    "dev": "nodemon --exec babel-node App.js",
-    "compile": "babel App.js --out-file App-compiled.js",
-    "start": "npm run compile && node App-compiled.js"
+    "dev": "nodemon --exec babel-node index.js",
+    "compile": "babel index.js --out-file index-compiled.js",
+    "start": "npm run compile && node index-compiled.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mssql": "^6.3.0",
-    "request": "^2.88.2",
-    "sequelize": "^6.3.5",
-    "tedious": "^9.2.1"
+    "sequelize": "^6.3.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",

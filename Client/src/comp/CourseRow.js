@@ -16,7 +16,7 @@ import Typography from "@material-ui/core/Typography"
 
 const useStyles = makeStyles(() => ({
   select: {
-    width: 107,
+    width: 108,
   },
 }))
 

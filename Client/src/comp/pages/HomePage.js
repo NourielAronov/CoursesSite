@@ -32,7 +32,7 @@ const HomePage = () => {
 
   const filterCoursesByDate = (courseDate) => {
     return Array.isArray(courseDate)
-      ? courseDate.some((date) => date.indexOf(searchDate) !== -1)
+      ? courseDate.some((date) => date.startDate.indexOf(searchDate) !== -1)
       : courseDate
   }
 

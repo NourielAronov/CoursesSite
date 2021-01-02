@@ -7,6 +7,5 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
-RUN ls
 
 ENTRYPOINT ["npm", "start"]

@@ -5,7 +5,7 @@ services:
   # Setup node container
   #########################
   server:
-    container_name: 'server'
+    container_name: "server"
     build:
       context: ./Server
       dockerfile: ../docker/server/Dockerfile
@@ -13,12 +13,12 @@ services:
       - 4000
     ports:
       - 4000:4000
-    ##########################
-    # Setup client container
-    ##########################
+  ##########################
+  # Setup client container
+  ##########################
 
   client:
-    container_name: 'client'
+    container_name: "client"
     build:
       context: ./Client
       dockerfile: ../docker/client/Dockerfile
@@ -31,6 +31,3 @@ services:
       - ./Client/public:/src/app/client/public
     links:
       - server
-    command: npm run start
-
-
